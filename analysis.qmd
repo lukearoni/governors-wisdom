@@ -1,0 +1,55 @@
+---
+title: "Wisdom and Governors"
+execute: 
+  echo: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+
+library(tidyverse)
+library(gt)
+library(primer.data)
+```
+
+## Background Information
+
+This dataset is drawn from an attempt to estimate the causal effect of winning an election on the subsequent lifespan of political candidates. The study includes data from candidates who participated in competitive elections, with the treatment defined as winning versus losing a narrowly decided race. By focusing on close contests, the analysis aims to approximate random assignment, helping to address confounding variables that might otherwise bias estimates. The dataset records each candidate’s age at election, party affiliation, gender, vote margin, and eventual age at death, allowing for regression-based modeling of the relationship between electoral outcomes and longevity. 
+
+Commentary: http://www.stat.columbia.edu/~gelman/research/published/causal_paths_3.pdf
+Response: https://erikgahner.dk/2020/a-response-to-andrew-gelman/
+
+### Scenarios
+
+1) Imagine you work for a life insurer, and want to forecast how long a newly elected Senator might live based on their age, party, and other variables. 
+
+2) Imagine you are a researcher. You want to know if winning candidates live longer. 
+
+### Data
+
+For this assignment, we will use the `governors` dataset, which contains information on U.S. gubernatorial candidates and their election outcomes. This dataset comes from published research and is available in the `primer.data` package.
+
+* Explore the data. What is the outcome variable? How is it distributed?
+
+
+
+### Preceptor Table
+
+What sorts of questions are we trying to answer?
+
+In order to build the Preceptor Table, we need to know: Is the model causal or predictive? What are units? What are the outcomes? What are the covariates? What are the treatments? Describe the mathematical Structure of the model.
+
+
+
+### Population Table 
+
+
+Describe the Population Table in your own words—what does each row represent in this context? Then, for each of the four key assumptions (validity, stability, representativeness, and unconfoundedness), provide both a definition in your own words and one specific counter-example for each assumption. 
+
+
+
+### Modeling 
+
+The outcome variable in this study is `death_age`, which is the age each political candidate died. What kind of regression model should you use to predict or explain death_age? Explain your choice based on what kind of variable `death_age` is?
+
