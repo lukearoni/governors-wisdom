@@ -24,7 +24,7 @@ Response: https://erikgahner.dk/2020/a-response-to-andrew-gelman/
 
 1) Imagine you work for a life insurer, and want to forecast how long a newly elected Senator might live based on their age, party, and other variables. 
 
-2) Imagine you are a researcher. You want to know if winning candidates live longer. 
+**2) Imagine you are a researcher. You want to know if winning candidates live longer.**
 
 ### Data
 
@@ -32,22 +32,52 @@ For this assignment, we will use the `governors` dataset, which contains informa
 
 * Explore the data. What is the outcome variable? How is it distributed?
 
+Outcome: death_age (years a candidate lived)
 
+```{r}
+governors |> 
+    ggplot(aes(x = death_age)) + 
+     geom_histogram()
+```
+
+Approximately normal distribution, slightly skewed left.
 
 ### Preceptor Table
 
 What sorts of questions are we trying to answer?
 
+Do winning candidates of an election tend to live longer?
+
 In order to build the Preceptor Table, we need to know: Is the model causal or predictive? What are units? What are the outcomes? What are the covariates? What are the treatments? Describe the mathematical Structure of the model.
 
+Causal: difference in two potential outcomes (years lived if won vs lost)
 
+Units: individual candidates
+Outcomes: years a candidate lived (if won/lost)
+Covariates: election_age, party, sex, state, status, region
+Treatments: election result
+
+Model: linear regression model (outcome is continuous)
 
 ### Population Table 
 
 
 Describe the Population Table in your own words—what does each row represent in this context? Then, for each of the four key assumptions (validity, stability, representativeness, and unconfoundedness), provide both a definition in your own words and one specific counter-example for each assumption. 
 
+Unit/time combination
+Individual candidate/year election
 
+Validity: consistency between columns from data and preceptor table
+- Made up: in the data, the ages of candidates are in dog years, but in the preceptor table, they're in normal years
+
+Stability: column relationships don't change over time
+- People from 1800s had shorter lifespans than people nowadays
+
+Representativeness: data and preceptor table are random samples from same population
+- Data includes elections from years past when females didn't have rights to run for a government position, so there is a lack of data representing all female candidates
+
+Unconfoundedness: treatments are randomly imposed and independently of covariates
+- Made up: winning an election is associated with the female gender (we can't control treatment really)
 
 ### Modeling 
 
